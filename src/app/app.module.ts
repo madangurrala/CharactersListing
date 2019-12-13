@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { TabularComponent } from './tabular/tabular.component';
 import { ListComponent } from './list/list.component';
 import { ItemComponent } from './item/item.component';
+import { CharactersService } from './characters.services';
+import { LogService } from './log.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,7 @@ import { ItemComponent } from './item/item.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [CharactersService, LogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

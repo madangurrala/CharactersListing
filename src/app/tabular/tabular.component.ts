@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CharactersService } from '../characters.services';
 
 @Component({
   selector: 'app-tabular',
@@ -6,37 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tabular.component.css']
 })
 export class TabularComponent implements OnInit {
-  characters = [
-    {name: 'Luke SkyWalker', side: ''},
-    {name: 'Darth Wander', side: ''}
-  ];
+  characters = [];
   chosenList = 'all';
 
-  constructor() { }
-
-  ngOnInit() {
+  charService: CharactersService;
+  constructor(charService: CharactersService) {
+    this.charService = charService;
   }
 
-  getCharacter() {
-
-    if(this.chosenList === 'all') {
-      return this.characters.slice();
-    }
-    return this.characters.filter((char) => {
-      return char.side === this.chosenList;
-    });
+  ngOnInit() {
   }
 
   onChoose(side) {
     this.chosenList = side;
   }
 
-  onSideChoosen(charInfo){
-    const position = this.characters.findIndex((char) => {
-      return char.name === charInfo.name;
-    });
-    this.characters[position].side = charInfo.side;
-
+  getCharacter(chosenList) {
+    this.characters = this.charService.getCharacter(this.chosenList);
+    return this.characters;
   }
 
 }
