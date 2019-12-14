@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CharactersService {
+
+  pos;
   private characters = [
     {name: 'Luke SkyWalker', side: ''},
     {name: 'Darth Wander', side: ''}
@@ -14,7 +16,7 @@ export class CharactersService {
    }
 
   getCharacter(chosenList) {
-    if(chosenList === 'all') {
+    if (chosenList === 'all') {
       return this.characters.slice();
     }
     return this.characters.filter((char) => {
@@ -29,4 +31,16 @@ export class CharactersService {
     this.logService.writeLog('Changed side of ' + charInfo.name + ', new side: ' + charInfo.side);
 
   }
+
+  addCharacter(charName, charSide) {
+    this.pos = this.characters.findIndex((char) => {
+      return char.name === charName;
+    });
+    if (this.pos !== -1) {
+      return;
+    }
+    const newChar = {name: charName, side: charSide};
+    this.characters.push(newChar);
+  }
+
 }
