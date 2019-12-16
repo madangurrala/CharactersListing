@@ -7,24 +7,24 @@ import { CharactersService } from '../characters.services';
   styleUrls: ['./tabular.component.css']
 })
 export class TabularComponent implements OnInit {
-  characters = [];
-  chosenList = 'all';
+  // characters = [];
+  // chosenList = 'all';
 
-  charService: CharactersService;
-  constructor(charService: CharactersService) {
-    this.charService = charService;
+  // charService: CharactersService;
+  constructor() {
+    // this.charService = charService;
   }
 
   ngOnInit() {
   }
 
-  onChoose(side) {
-    this.chosenList = side;
-  }
+  // onChoose(side) {
+  //   this.chosenList = side;
+  // }
 
-  getCharacter(chosenList) {
-    this.characters = this.charService.getCharacter(this.chosenList);
-    return this.characters;
-  }
+  // getCharacter(chosenList) {
+  //   this.characters = this.charService.getCharacter(this.chosenList);
+  //   return this.characters;
+  // }
 
 }
