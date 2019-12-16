@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClient } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TabularComponent } from './tabular/tabular.component';
@@ -13,16 +12,7 @@ import { LogService } from './log.service';
 import { CreateCharacterComponent } from './create-character/create-character.component';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
-
-const routes = [
-  {path: 'characters', component: TabularComponent, children: [
-    {path: '', redirectTo: 'all', pathMatch : 'full'},
-    {path: ':side', component: ListComponent}
-  ]},
-  {path: 'new-character', component: CreateCharacterComponent},
-  {path: '**', redirectTo: '/characters'}
-];
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -36,8 +26,8 @@ const routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [CharactersService, LogService],
   bootstrap: [AppComponent]
